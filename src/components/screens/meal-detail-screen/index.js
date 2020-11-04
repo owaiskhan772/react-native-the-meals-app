@@ -1,8 +1,9 @@
 import React from "react";
-import { View, Text, StyleSheet } from "react-native";
+import { ScrollView, View, Image, Text, StyleSheet } from "react-native";
 
 import { HeaderButtons, Item } from "react-navigation-header-buttons";
 import CustomHeaderButton from "../../custom-header-button";
+import DefaultText from "../../default-text";
 
 import { MEALS } from "../../../../data/dummy-data";
 
@@ -11,9 +12,27 @@ const MealDetailScreen = (props) => {
   const selectedMealDetail = MEALS.find((meal) => meal.id === mealId);
 
   return (
-    <View style={styles.screen}>
-      <Text>{selectedMealDetail.title}</Text>
-    </View>
+    <ScrollView>
+      <Image
+        source={{ uri: selectedMealDetail.imageUrl }}
+        style={styles.image}
+      />
+      <View style={styles.details}>
+        <DefaultText>{selectedMealDetail.duration}m</DefaultText>
+        <DefaultText>{selectedMealDetail.complexity.toUpperCase()}</DefaultText>
+        <DefaultText>
+          {selectedMealDetail.affordability.toUpperCase()}
+        </DefaultText>
+      </View>
+      <Text style={styles.title}>Ingredients</Text>
+      {selectedMealDetail.ingredients.map((ingredient) => (
+        <ListItem key={ingredient}>{ingredient}</ListItem>
+      ))}
+      <Text style={styles.title}>Steps</Text>
+      {selectedMealDetail.steps.map((step) => (
+        <ListItem key={step}>{step}</ListItem>
+      ))}
+    </ScrollView>
   );
 };
 
@@ -34,11 +53,35 @@ MealDetailScreen.navigationOptions = (navigationData) => {
   };
 };
 
+const ListItem = (props) => {
+  return (
+    <View style={styles.listItem}>
+      <DefaultText>{props.children}</DefaultText>
+    </View>
+  );
+};
+
 const styles = StyleSheet.create({
-  screen: {
-    flex: 1,
-    justifyContent: "center",
-    alignItems: "center",
+  image: {
+    width: "100%",
+    height: 200,
+  },
+  details: {
+    flexDirection: "row",
+    padding: 15,
+    justifyContent: "space-around",
+  },
+  title: {
+    fontFamily: "open-sans-bold",
+    fontSize: 22,
+    textAlign: "center",
+  },
+  listItem: {
+    marginVertical: 10,
+    marginHorizontal: 20,
+    borderColor: "#ccc",
+    borderWidth: 1,
+    padding: 10,
   },
 });
 
