@@ -3,7 +3,7 @@ import { FlatList, StyleSheet } from "react-native";
 
 import { CATEGORIES } from "../../../../data/dummy-data";
 
-import CategoryGridTile from "../../../components/category-grid-tile";
+import CategoryGridTile from "../../category-grid-tile";
 
 const CategoriesScreen = (props) => {
   const renderGridItem = (itemData) => {

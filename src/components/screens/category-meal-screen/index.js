@@ -3,7 +3,7 @@ import { View, StyleSheet, FlatList } from "react-native";
 
 import { CATEGORIES, MEALS } from "../../../../data/dummy-data";
 
-import MealGridTile from "../../../components/meal-grid-tile";
+import MealGridTile from "../../meal-grid-tile";
 
 const CategoryMealScreen = (props) => {
   const categoryId = props.navigation.getParam("categoryId");
