@@ -11,8 +11,9 @@ import DefaultText from "../../default-text";
 const MealDetailScreen = (props) => {
   const dispatch = useDispatch();
 
-  const mealId = props.navigation.getParam("mealId");
   const availableMeals = useSelector((state) => state.meals.allMeals);
+
+  const mealId = props.navigation.getParam("mealId");
   const selectedMealDetail = availableMeals.find((meal) => meal.id === mealId);
 
   const toggleFavoriteHandler = useCallback(() => {
@@ -51,12 +52,17 @@ const MealDetailScreen = (props) => {
 MealDetailScreen.navigationOptions = (navigationData) => {
   const mealTitle = navigationData.navigation.getParam("mealTitle");
   const toggleFavorite = navigationData.navigation.getParam("toggleFav");
+  const isFavorite = navigationData.navigation.getParam("isFav");
 
   return {
     headerTitle: mealTitle,
     headerRight: () => (
       <HeaderButtons HeaderButtonComponent={CustomHeaderButton}>
-        <Item title="Favorite" iconName="md-star" onPress={toggleFavorite} />
+        <Item
+          title="Favorite"
+          iconName={isFavorite ? "ios-star" : "ios-star-outline"}
+          onPress={toggleFavorite}
+        />
       </HeaderButtons>
     ),
   };

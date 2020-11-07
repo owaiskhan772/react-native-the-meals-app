@@ -1,10 +1,18 @@
 import React from "react";
+import { useSelector } from "react-redux";
+
 import { View, FlatList, StyleSheet } from "react-native";
 
 import MealGridTile from "../meal-grid-tile";
 
 const MealList = (props) => {
+  const favoriteMeals = useSelector((state) => state.meals.favoriteMeals);
+
   const renderMeal = (itemData) => {
+    const isFavorite = favoriteMeals.some(
+      (meal) => meal.id === itemData.item.id
+    );
+
     return (
       <MealGridTile
         title={itemData.item.title}
@@ -16,6 +24,7 @@ const MealList = (props) => {
           props.navigation.navigate("MealDetailNavigator", {
             mealId: itemData.item.id,
             mealTitle: itemData.item.title,
+            isFav: isFavorite,
           });
         }}
       />
