@@ -29,3 +29,7 @@ Click [here](https://github.com/owaiskhan772/react-native-the-meals-app) then do
 > npm start or yarn start
 > Expo Developer Tools will open and see for 3 options to start the application (i.e. on Android, on iOS and in Web Browser)
 ```
+
+#### Demo Screens
+
+`app-demo-screens` folder have the demo snaphots of the app running on the Android Emulator
