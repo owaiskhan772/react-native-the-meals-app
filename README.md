@@ -32,4 +32,4 @@ Click [here](https://github.com/owaiskhan772/react-native-the-meals-app) then do
 
 #### Demo Screens
 
-`app-demo-screens` folder have the demo snaphots of the app running on the Android Emulator
+`app-demo-screens` folder has the demo snaphots of the app running on the Android Emulator
